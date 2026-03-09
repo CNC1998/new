@@ -1,0 +1,1033 @@
+/* =============================================================================
+   style.css  –  ML-Based Resume Analyzer
+   Pure CSS — no frameworks, no external imports
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. RESET & BASE STYLES
+   ============================================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #07080f;
+    color: #e2e0f0;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6d28d9;
+    border-radius: 3px;
+}
+
+
+/* =============================================================================
+   2. ANIMATIONS
+   ============================================================================= */
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =============================================================================
+   3. NAVIGATION BAR
+   ============================================================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(7, 8, 15, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1a1a2e;
+    padding: 0 32px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.nav-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #6d28d9, #0891b2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(109, 40, 217, 0.12);
+    border: 1px solid rgba(109, 40, 217, 0.28);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    color: #a78bfa;
+    font-weight: 600;
+}
+
+/* The small pulsing green dot */
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+}
+
+
+/* =============================================================================
+   4. HERO SECTION
+   ============================================================================= */
+
+.hero {
+    text-align: center;
+    padding: 60px 20px 44px;
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fade-up 0.5s ease;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(109, 40, 217, 0.1);
+    border: 1px solid rgba(109, 40, 217, 0.25);
+    color: #a78bfa;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+}
+
+/* Purple-to-cyan gradient text for the headline */
+.gradient-text {
+    background: linear-gradient(135deg, #a78bfa, #67e8f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    color: #6b7280;
+    font-size: 0.94rem;
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+/* Small tech stack chips below the description */
+.tech-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: center;
+}
+
+.chip {
+    font-size: 0.68rem;
+    padding: 3px 11px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #1e1b30;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+
+/* =============================================================================
+   5. MAIN LAYOUT
+   ============================================================================= */
+
+.main-wrapper {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+/* Generic card container */
+.card {
+    background: #111120;
+    border: 1px solid #1a1a2e;
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 18px;
+}
+
+/* Card section title with a small purple bar on the left */
+.card-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #a78bfa;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background: linear-gradient(#6d28d9, #0891b2);
+    border-radius: 2px;
+}
+
+
+/* =============================================================================
+   6. DOMAIN SELECTION GRID
+   ============================================================================= */
+
+.domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+    gap: 8px;
+}
+
+.domain-btn {
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    color: #6b7280;
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-size: 0.79rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.2s;
+}
+
+.domain-btn:hover {
+    border-color: #4b3f72;
+    color: #c4b5fd;
+    background: rgba(109, 40, 217, 0.06);
+}
+
+/* Currently selected domain button */
+.domain-btn.active {
+    border-color: #6d28d9;
+    color: #a78bfa;
+    background: rgba(109, 40, 217, 0.12);
+    font-weight: 600;
+}
+
+.domain-icon {
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   7. FILE UPLOAD ZONE
+   ============================================================================= */
+
+.upload-section {
+    margin-top: 26px;
+}
+
+.upload-zone {
+    border: 2px dashed #1a1a2e;
+    border-radius: 14px;
+    padding: 52px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 4px;
+}
+
+.upload-zone:hover,
+.upload-zone.dragging {
+    border-color: #6d28d9;
+    background: rgba(109, 40, 217, 0.05);
+}
+
+/* After a file is chosen */
+.upload-zone.has-file {
+    border-color: rgba(109, 40, 217, 0.5);
+    background: rgba(109, 40, 217, 0.04);
+}
+
+.upload-icon {
+    font-size: 42px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.upload-title {
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.upload-hint {
+    font-size: 0.78rem;
+    color: #4b5563;
+}
+
+/* File name shown after upload */
+.file-name {
+    font-weight: 700;
+    color: #e2e0f0;
+    font-size: 0.98rem;
+    margin-bottom: 3px;
+}
+
+.file-size {
+    color: #a78bfa;
+    font-size: 0.8rem;
+}
+
+
+/* =============================================================================
+   8. PROGRESS BAR
+   ============================================================================= */
+
+.progress-section {
+    margin-top: 14px;
+    display: none;    /* shown by JavaScript when analysis starts */
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.progress-track {
+    height: 4px;
+    background: #1a1a2e;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6d28d9, #0891b2);
+    border-radius: 2px;
+    width: 0;
+    transition: width 0.4s ease;
+}
+
+
+/* =============================================================================
+   9. ERROR BOX
+   ============================================================================= */
+
+.error-box {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 9px;
+    padding: 10px 15px;
+    color: #f87171;
+    font-size: 0.8rem;
+    margin-top: 12px;
+    display: none;    /* shown by JavaScript on error */
+}
+
+
+/* =============================================================================
+   10. ANALYSE BUTTON
+   ============================================================================= */
+
+.btn-analyse {
+    width: 100%;
+    padding: 15px;
+    border-radius: 11px;
+    border: none;
+    background: linear-gradient(135deg, #6d28d9, #0891b2);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.96rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+    transition: all 0.3s;
+}
+
+.btn-analyse:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(109, 40, 217, 0.4);
+}
+
+.btn-analyse:disabled {
+    background: #1a1a2e;
+    color: #374151;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Spinning loader inside the button */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   11. RESULTS SECTION
+   ============================================================================= */
+
+.results-hidden {
+    display: none;    /* shown by JavaScript after analysis */
+    animation: fade-up 0.4s ease;
+}
+
+
+/* --- Score + Summary Row --------------------------------------------------- */
+
+.score-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.score-card {
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-label {
+    font-size: 0.6rem;
+    color: #6b7280;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.score-number {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 3px;
+}
+
+.score-level {
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+.score-counts {
+    display: flex;
+    gap: 14px;
+    border-top: 1px solid #1a1a2e;
+    padding-top: 14px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Individual sub-score bar */
+.sub-score-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: #6b7280;
+    margin-bottom: 3px;
+}
+
+.sub-score-track {
+    height: 3px;
+    background: #1a1a2e;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.sub-score-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.8s ease;
+}
+
+.summary-panel {
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.summary-label {
+    font-size: 0.6rem;
+    color: #6b7280;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.summary-text {
+    color: #9ca3af;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    flex: 1;
+}
+
+
+/* --- Charts Row ------------------------------------------------------------ */
+
+.charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.chart-box {
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.chart-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+canvas {
+    display: block;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    color: #9ca3af;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+
+/* --- Matched / Missing Skills --------------------------------------------- */
+
+.skills-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.skill-box {
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.matched-box {
+    border: 1px solid rgba(74, 222, 128, 0.14);
+    background: rgba(74, 222, 128, 0.03);
+}
+
+.missing-box {
+    border: 1px solid rgba(248, 113, 113, 0.14);
+    background: rgba(248, 113, 113, 0.03);
+}
+
+.skill-box-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.matched-title { color: #4ade80; }
+.missing-title  { color: #f87171; }
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Individual skill tag */
+.tag {
+    font-size: 0.7rem;
+    padding: 3px 9px;
+    border-radius: 5px;
+    border: 1px solid;
+    font-weight: 500;
+}
+
+.tag-green {
+    background: rgba(74, 222, 128, 0.09);
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.2);
+}
+
+.tag-red {
+    background: rgba(248, 113, 113, 0.09);
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.2);
+}
+
+
+/* --- Suggestions ----------------------------------------------------------- */
+
+.suggestion-item {
+    display: flex;
+    gap: 11px;
+    padding: 12px;
+    background: #0d0d1a;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.suggestion-number {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(109, 40, 217, 0.15);
+    color: #a78bfa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.suggestion-text {
+    color: #9ca3af;
+    font-size: 0.83rem;
+    line-height: 1.75;
+}
+
+
+/* --- Company Cards --------------------------------------------------------- */
+
+.companies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
+    gap: 11px;
+    margin-top: 14px;
+}
+
+.company-card {
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.22s;
+}
+
+.company-card:hover {
+    transform: translateY(-2px);
+    border-color: #352f50;
+}
+
+/* Coloured top bar unique to each company */
+.company-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+
+.company-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 11px;
+}
+
+.company-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.company-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.company-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-bottom: 1px;
+}
+
+.company-role {
+    color: #6b7280;
+    font-size: 0.7rem;
+}
+
+.match-badge {
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.25);
+    color: #4ade80;
+    font-size: 0.63rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.fit-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.63rem;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.fit-value {
+    color: #4ade80;
+    font-weight: 700;
+}
+
+.fit-track {
+    height: 2.5px;
+    background: #1a1a2e;
+    border-radius: 2px;
+    margin-bottom: 11px;
+}
+
+.fit-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #67e8f9);
+    border-radius: 2px;
+    transition: width 0.8s ease;
+}
+
+.company-links {
+    display: flex;
+    gap: 6px;
+}
+
+.company-link {
+    font-size: 0.67rem;
+    font-weight: 600;
+    padding: 5px 9px;
+    border-radius: 6px;
+    border: 1px solid;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.company-link:hover {
+    opacity: 0.75;
+}
+
+.link-linkedin {
+    background: rgba(10, 102, 194, 0.1);
+    color: #0A66C2;
+    border-color: rgba(10, 102, 194, 0.25);
+}
+
+.link-indeed {
+    background: rgba(0, 58, 155, 0.08);
+    color: #003A9B;
+    border-color: rgba(0, 58, 155, 0.18);
+}
+
+.link-careers {
+    border-color: #1a1a2e;
+    color: #6b7280;
+}
+
+
+/* --- No Match State -------------------------------------------------------- */
+
+.no-match-box {
+    border: 1.5px dashed rgba(248, 113, 113, 0.25);
+    background: rgba(248, 113, 113, 0.03);
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.no-match-box h3 {
+    color: #f87171;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.no-match-box p {
+    color: #6b7280;
+    font-size: 0.83rem;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 16px;
+}
+
+.learn-links {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.learn-btn {
+    padding: 7px 15px;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.77rem;
+    border: none;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.learn-btn:hover {
+    opacity: 0.82;
+}
+
+
+/* --- Almost There Section -------------------------------------------------- */
+
+.almost-section {
+    border: 1px dashed rgba(251, 191, 36, 0.28);
+    background: rgba(251, 191, 36, 0.03);
+    border-radius: 12px;
+    padding: 13px;
+    margin-top: 12px;
+}
+
+.almost-title {
+    font-size: 0.7rem;
+    color: #fbbf24;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.almost-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.almost-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 11px;
+    background: #111120;
+    border: 1px solid #1a1a2e;
+    border-radius: 9px;
+}
+
+.almost-logo {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.75rem;
+    color: #fff;
+}
+
+.almost-name {
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.almost-need {
+    font-size: 0.62rem;
+    color: #fbbf24;
+}
+
+
+/* --- Job Platforms Grid ---------------------------------------------------- */
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.platform-card {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 12px;
+    background: #0d0d1a;
+    border: 1px solid #1a1a2e;
+    border-radius: 10px;
+    transition: all 0.22s;
+}
+
+.platform-card:hover {
+    transform: translateY(-2px);
+    border-color: #352f50;
+}
+
+.platform-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.platform-name {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #e2e0f0;
+}
+
+.platform-desc {
+    font-size: 0.63rem;
+    color: #6b7280;
+}
+
+
+/* =============================================================================
+   12. RESPONSIVE DESIGN
+   For tablets and smaller phones
+   ============================================================================= */
+
+@media (max-width: 700px) {
+
+    .score-row {
+        grid-template-columns: 1fr;
+    }
+
+    .charts-row {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-row {
+        grid-template-columns: 1fr;
+    }
+
+    .domain-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+}

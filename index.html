@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeML – ML Based Resume Analyzer</title>
+
+    <!-- Our own CSS file — no external stylesheets or CDN links -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+    <!-- ================================================================
+         NAVIGATION BAR
+         ================================================================ -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <div class="nav-badge">ML</div>
+            <span>ResumeML</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-status">
+                <span class="status-dot"></span>
+                ML Engine Active
+            </span>
+            <span class="nav-username" id="nav-username"></span>
+            <a href="/history" class="nav-btn">&#128196; My Resumes</a>
+            <button class="nav-btn nav-btn-logout" onclick="logoutUser()">Logout</button>
+        </div>
+    </nav>
+
+
+    <!-- ================================================================
+         HERO SECTION
+         ================================================================ -->
+    <header class="hero">
+        <div class="hero-tag">
+            <span class="status-dot"></span>
+            100% Local &nbsp;·&nbsp; Zero External API
+        </div>
+
+        <h1>
+            Resume Analysis Powered by<br>
+            <span class="gradient-text">Pure Machine Learning</span>
+        </h1>
+
+        <p class="hero-description">
+            TF-IDF Vectorisation &middot; Cosine Similarity &middot;
+            Jaccard Scoring &middot; N-gram Tokenisation<br>
+            Built with Python, Flask, scikit-learn, HTML, CSS &amp; JavaScript
+        </p>
+
+        <!-- Tech stack chips -->
+        <div class="tech-chips">
+            <span class="chip">Python</span>
+            <span class="chip">Flask</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">TF-IDF</span>
+            <span class="chip">Cosine Similarity</span>
+            <span class="chip">Jaccard Similarity</span>
+            <span class="chip">N-gram Tokenisation</span>
+            <span class="chip">HTML5 Canvas Charts</span>
+            <span class="chip">pdfplumber</span>
+            <span class="chip">python-docx</span>
+        </div>
+    </header>
+
+
+    <!-- ================================================================
+         MAIN CONTENT
+         ================================================================ -->
+    <main class="main-wrapper">
+
+        <!-- ---- STEP 1: Domain Selection ---- -->
+        <section class="card" id="form-section">
+
+            <h2 class="card-title">Step 01 &mdash; Choose Target Domain</h2>
+            <div class="domain-grid" id="domain-grid">
+                <!-- Buttons are injected here by JavaScript -->
+            </div>
+
+            <!-- ---- STEP 2: Resume Upload ---- -->
+            <div class="upload-section">
+                <h2 class="card-title">Step 02 &mdash; Upload Your Resume</h2>
+
+                <div class="upload-zone" id="drop-zone">
+                    <span class="upload-icon" id="upload-icon">&#11014;</span>
+                    <p class="upload-title" id="upload-title">
+                        Drop your resume here or click to browse
+                    </p>
+                    <p class="upload-hint" id="upload-hint">
+                        PDF, DOCX, or TXT &bull; Max 5 MB &bull; TXT gives best ML accuracy
+                    </p>
+                </div>
+
+                <!-- Hidden file input triggered by clicking the upload zone -->
+                <input type="file" id="file-input" accept=".pdf,.docx,.txt" hidden>
+            </div>
+
+            <!-- Progress bar (shown during analysis) -->
+            <div class="progress-section" id="progress-section">
+                <div class="progress-header">
+                    <span id="progress-label">Processing...</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Error message box -->
+            <div class="error-box" id="error-box"></div>
+
+            <!-- Analyse button -->
+            <button class="btn-analyse" id="btn-analyse" disabled onclick="runAnalysis()">
+                <span id="btn-text">&#9881; Run ML Analysis</span>
+            </button>
+
+        </section>
+
+
+        <!-- ================================================================
+             RESULTS SECTION
+             Shown after analysis completes. Hidden by default.
+             ================================================================ -->
+        <section id="results-section" class="results-hidden">
+
+            <!-- Score + Summary Row -->
+            <div class="score-row">
+
+                <!-- Left: Score card -->
+                <div class="score-card">
+                    <p class="score-label">ML Score</p>
+                    <p class="score-number" id="result-score">—</p>
+                    <p class="score-level"  id="result-level">—</p>
+                    <div id="sub-scores"></div>
+                    <div class="score-counts" id="score-counts"></div>
+                </div>
+
+                <!-- Right: Summary panel -->
+                <div class="summary-panel">
+                    <p class="summary-label">Candidate Summary</p>
+                    <p class="summary-text" id="result-summary"></p>
+                </div>
+
+            </div>
+
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+
+                <!-- Doughnut chart -->
+                <div class="chart-box">
+                    <p class="chart-label">Skill Distribution</p>
+                    <canvas id="canvas-donut" width="200" height="200"></canvas>
+                    <div class="chart-legend" id="donut-legend"></div>
+                </div>
+
+                <!-- Bar chart -->
+                <div class="chart-box">
+                    <p class="chart-label">Skills Coverage (Top 10)</p>
+                    <canvas id="canvas-bar" width="460" height="200"></canvas>
+                </div>
+
+            </div>
+
+
+            <!-- Matched and Missing Skills -->
+            <div class="skills-row">
+
+                <div class="skill-box matched-box">
+                    <p class="skill-box-title matched-title">&#10003; Matched Skills</p>
+                    <div class="tags-container" id="matched-skills"></div>
+                </div>
+
+                <div class="skill-box missing-box">
+                    <p class="skill-box-title missing-title">&#10007; Missing Skills</p>
+                    <div class="tags-container" id="missing-skills"></div>
+                </div>
+
+            </div>
+
+
+            <!-- Improvement Suggestions -->
+            <div class="card">
+                <h2 class="card-title">&#128161; ML-Generated Suggestions</h2>
+                <div id="suggestions-list"></div>
+            </div>
+
+
+            <!-- Company Matches -->
+            <div class="card">
+                <h2 class="card-title">&#127970; Company Matches</h2>
+                <div id="companies-section"></div>
+            </div>
+
+
+            <!-- Job Platforms -->
+            <div class="card">
+                <h2 class="card-title">&#128269; Find More Jobs</h2>
+                <div class="platforms-grid" id="platforms-grid"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Our own JavaScript file — no external scripts or libraries -->
+    <script src="static/script.js"></script>
+    <script src="static/auth.js"></script>
+
+</body>
+</html>

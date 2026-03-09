@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resumes – ResumeML</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/history.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <div class="nav-badge">ML</div>
+            <span>ResumeML</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-username" id="nav-username"></span>
+            <a href="/" class="nav-btn">&#9881; Analyze Resume</a>
+            <button class="nav-btn nav-btn-logout" onclick="logoutUser()">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+
+        <!-- Page Header -->
+        <div class="history-header">
+            <h1 class="history-title">My Resume History</h1>
+            <p class="history-subtitle">All resumes you have analyzed are stored here</p>
+        </div>
+
+        <!-- Loading state -->
+        <div class="loading-box" id="loading-box">
+            <div class="loading-spinner"></div>
+            <p>Loading your resumes...</p>
+        </div>
+
+        <!-- Empty state (shown when no resumes yet) -->
+        <div class="empty-box" id="empty-box">
+            <div class="empty-icon">&#128196;</div>
+            <h2>No resumes yet</h2>
+            <p>Upload your first resume to see your analysis history here.</p>
+            <a href="/" class="auth-btn" style="display:inline-block;margin-top:16px;text-decoration:none;padding:12px 28px">
+                &#9881; Analyze a Resume
+            </a>
+        </div>
+
+        <!-- Resume cards grid (filled by JavaScript) -->
+        <div class="history-grid" id="history-grid"></div>
+
+    </main>
+
+    <script src="static/history.js"></script>
+
+</body>
+</html>

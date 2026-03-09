@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – ResumeML</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/auth.css">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-wrapper">
+
+        <!-- Logo -->
+        <div class="auth-logo">
+            <div class="nav-badge">ML</div>
+            <span>ResumeML</span>
+        </div>
+
+        <!-- Login Card -->
+        <div class="auth-card">
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Login to access your resume analyzer</p>
+
+            <!-- Error message (shown on wrong credentials) -->
+            <div class="auth-error" id="auth-error"></div>
+
+            <!-- Login Form -->
+            <div class="auth-form">
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        class="form-input"
+                        placeholder="you@email.com"
+                        onkeydown="if(event.key==='Enter') loginUser()"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        class="form-input"
+                        placeholder="Enter your password"
+                        onkeydown="if(event.key==='Enter') loginUser()"
+                    >
+                </div>
+
+                <button class="auth-btn" id="login-btn" onclick="loginUser()">
+                    <span id="login-btn-text">Login</span>
+                </button>
+
+            </div>
+
+            <!-- Link to register -->
+            <p class="auth-switch">
+                Don't have an account?
+                <a href="/register" class="auth-link">Create one here</a>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="static/auth.js"></script>
+
+</body>
+</html>

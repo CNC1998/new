@@ -1,0 +1,96 @@
+John Smith
+Data Scientist | Machine Learning Engineer
+Email: john.smith@email.com | Phone: +1-555-123-4567
+LinkedIn: linkedin.com/in/johnsmith | GitHub: github.com/johnsmith
+
+==================================================
+PROFESSIONAL SUMMARY
+==================================================
+Experienced Data Scientist with 5 years of experience in Machine Learning,
+statistical modeling, and data visualization. Proficient in Python, R, and SQL
+with hands-on expertise in TensorFlow, Scikit-learn, Pandas, and NumPy.
+Strong background in building end-to-end ML pipelines and delivering
+actionable insights through Tableau and Power BI dashboards.
+
+==================================================
+TECHNICAL SKILLS
+==================================================
+Programming Languages : Python, R, SQL
+ML Frameworks        : TensorFlow, Scikit-learn, Keras
+Data Analysis        : Pandas, NumPy, Statistics, Excel
+Visualization        : Matplotlib, Tableau, Power BI, Data Visualization
+Big Data             : Spark, Hadoop
+Tools                : Git, Docker, Jupyter Notebook
+Cloud                : AWS, Azure
+
+==================================================
+WORK EXPERIENCE
+==================================================
+
+Senior Data Scientist — ABC Analytics Pvt Ltd
+January 2022 – Present
+
+- Built Machine Learning models for customer churn prediction using
+  Scikit-learn and Python, improving retention by 22%
+- Developed interactive Tableau dashboards to track KPIs for 10+
+  business units
+- Designed and deployed a TensorFlow deep learning model for image
+  classification achieving 94% accuracy
+- Processed large datasets using Pandas and NumPy, reducing
+  preprocessing time by 40%
+- Created automated reports using Power BI and SQL queries
+
+
+Data Analyst — XYZ Tech Solutions
+June 2019 – December 2021
+
+- Performed statistical analysis and hypothesis testing using R and Python
+- Built regression and classification models using Scikit-learn
+- Designed data pipelines using Spark for large-scale data processing
+- Created Data Visualization reports using Matplotlib and Tableau
+- Queried and managed databases using SQL and Excel
+
+
+==================================================
+EDUCATION
+==================================================
+
+Bachelor of Engineering in Computer Science
+Anna University, Chennai — 2019
+CGPA: 8.4 / 10
+
+
+==================================================
+PROJECTS
+==================================================
+
+1. Sales Forecasting System (Python, TensorFlow, Pandas)
+   - Built an LSTM model using TensorFlow to forecast monthly sales
+   - Achieved 91% accuracy on test data
+   - Visualized results using Matplotlib and Tableau
+
+2. Customer Segmentation (Python, Scikit-learn, NumPy)
+   - Applied K-Means clustering using Scikit-learn on 500K customer records
+   - Used Pandas and NumPy for data cleaning and feature engineering
+   - Presented findings via Power BI dashboard
+
+3. Sentiment Analysis (Python, NLP, Machine Learning)
+   - Built a text classification model using Scikit-learn and Python
+   - Preprocessed text data using NLTK and Pandas
+   - Achieved 88% accuracy on a dataset of 100,000 tweets
+
+
+==================================================
+CERTIFICATIONS
+==================================================
+- Google Professional Data Analytics Certificate
+- IBM Machine Learning Professional Certificate
+- Microsoft Azure Data Scientist Associate (DP-100)
+- Tableau Desktop Specialist
+
+
+==================================================
+SOFT SKILLS
+==================================================
+Problem Solving, Data Storytelling, Team Collaboration,
+Communication, Critical Thinking, Project Management
